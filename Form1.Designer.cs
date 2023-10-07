@@ -34,7 +34,7 @@
             // c_listbox_calender
             // 
             this.c_listbox_calender.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c_listbox_calender.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.c_listbox_calender.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.c_listbox_calender.HideSelection = false;
             this.c_listbox_calender.LabelWrap = false;
             this.c_listbox_calender.Location = new System.Drawing.Point(0, 0);

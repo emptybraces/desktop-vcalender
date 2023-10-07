@@ -42,7 +42,9 @@ namespace app_vertical_calender
             c_listbox_calender.ForeColor = uimode == "light" ? Color.FromArgb(47, 54, 64) : Color.FromArgb(245, 246, 250);
             c_listbox_calender.BackColor = uimode == "light" ? Color.FromArgb(245, 246, 250) : Color.FromArgb(47, 54, 64);
 
-            _startDate = DateTime.Today.AddDays(-60);
+
+            const int start_num = -60;
+            _startDate = DateTime.Today.AddDays(start_num);
             for (int i = 0; i < 120; i++)
             {
                 var date = _startDate.AddDays(i);
@@ -55,13 +57,6 @@ namespace app_vertical_calender
                 {
                     Text = _save.Get(date)
                 });
-                if (i == 0)
-                {
-                    item.Selected = true;
-                    item.ForeColor = ColorFromHSV(0, .5, 1);
-                }
-                if (i == 15)
-                    c_listbox_calender.TopItem = (item);
             }
         }
 
@@ -72,6 +67,10 @@ namespace app_vertical_calender
         private void Form1_Load(object sender, EventArgs e)
         {
             Bounds = Properties.Settings.Default.Bounds;
+            var item = c_listbox_calender.Items[60];
+            item.Selected = true;
+            item.ForeColor = ColorFromHSV(0, .5, 1);
+            c_listbox_calender.TopItem = (item);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -92,6 +91,7 @@ namespace app_vertical_calender
             if (selected != null)
             {
                 var form = new Form2();
+                form.textBox1.Text = selected[0].SubItems[1].Text;
                 form.ShowDialog();
                 if (form.IsOK)
                 {
