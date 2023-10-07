@@ -34,6 +34,7 @@ namespace app_vertical_calender
             c_listbox_calender.Columns.Add("", -2, HorizontalAlignment.Left);
             c_listbox_calender.HeaderStyle = ColumnHeaderStyle.None;
             c_listbox_calender.FullRowSelect = true;
+            c_listbox_calender.ShowItemToolTips = true;
             c_listbox_calender.Select();
             c_listbox_calender.DoubleClick += c_listbox_calender_DoubleClick;
             c_listbox_calender.ItemSelectionChanged += c_listbox_calender_ItemSelectionChanged;
@@ -41,7 +42,6 @@ namespace app_vertical_calender
             c_listbox_calender.MouseMove += c_listbox_MouseMove;
             c_listbox_calender.ForeColor = uimode == "light" ? Color.FromArgb(47, 54, 64) : Color.FromArgb(245, 246, 250);
             c_listbox_calender.BackColor = uimode == "light" ? Color.FromArgb(245, 246, 250) : Color.FromArgb(47, 54, 64);
-
 
             const int start_num = -60;
             _startDate = DateTime.Today.AddDays(start_num);
@@ -57,6 +57,7 @@ namespace app_vertical_calender
                 {
                     Text = _save.Get(date)
                 });
+                item.ToolTipText = _save.Get(date);
             }
         }
 
@@ -96,6 +97,7 @@ namespace app_vertical_calender
                 if (form.IsOK)
                 {
                     selected[0].SubItems[1].Text = form.textBox1.Text;
+                    selected[0].ToolTipText = form.textBox1.Text;
                     _save.Add(_startDate.AddDays(selected[0].Index), form.textBox1.Text);
                     XMLClass.Save(_save);
                 }
