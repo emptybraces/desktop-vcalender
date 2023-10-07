@@ -160,19 +160,20 @@ namespace app_vertical_calender
         {
             public string UIMode = "dark";
             public List<Item> Items = new List<Item>();
-            public void Add(DateTime key, string value)
+            string KeyFromDate(DateTime date) => date.ToString("yyyyMMdd");
+            public void Add(DateTime date, string value)
             {
-                var akey = key.ToOADate().ToString();
-                var index = Items.FindIndex(e => e.Key == akey);
+                var key = KeyFromDate(date);
+                var index = Items.FindIndex(e => e.Key == key);
                 if (-1 == index)
-                    Items.Add(new Item { Key = akey, Value = value });
+                    Items.Add(new Item { Key = key, Value = value });
                 else
                     Items[index].Value = value;
             }
-            public string Get(DateTime key)
+            public string Get(DateTime date)
             {
-                var akey = key.ToOADate().ToString();
-                var index = Items.FindIndex(e => e.Key == akey);
+                var key = KeyFromDate(date);
+                var index = Items.FindIndex(e => e.Key == key);
                 return -1 == index ? "" : Items[index].Value;
             }
             public class Item
